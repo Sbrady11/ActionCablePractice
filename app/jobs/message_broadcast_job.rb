@@ -5,6 +5,11 @@ class MessageBroadcastJob < ApplicationJob
     ActionCable.server.broadcast 'room_channel', message: render_message(message)
   end
 
+  def clean
+    puts '==============================================='
+    # Message.connection.execute("delete from messages;")
+  end
+
   private
 
   def render_message(message)

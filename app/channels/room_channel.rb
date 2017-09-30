@@ -5,7 +5,8 @@ class RoomChannel < ApplicationCable::Channel
   end
 
   def unsubscribed
-    # Any cleanup needed when channel is unsubscribed
+    # binding.pry
+    Message.connection.execute("delete from messages;")
   end
 
   def speak(data)
